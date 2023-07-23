@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <p> Enter any Text or Url to generate Its QR</p>
+        <input type="text" name="userInput" placeholder="Enter any url or text"/>
+        <div class="ImgContainer" id="ImgContain">
+            <img src="" alt="Generated Qr code" id="generatedImg"/>
+        </div>
+        <button type="submit" onclick="QrGenerate()">Generate QR Code</button>
+        <button type="submit" onclick="resetQr()">Reset the QR Code</button>
+    </div>
+
+</body>
+
+<script>
+    let image = document.getElementById("generatedImg");
+        let userIn = document.getElementsByName("userInput")[0];
+        let imageContainer = document.getElementById("ImgContain");
+
+    function QrGenerate(){
+        
+        if(userIn.value.length>0){
+            
+            image.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+ userIn.value;
+            imageContainer.classList.add("img-show");
+        }else{
+            userIn.classList.add("error");
+            setTimeout(()=>{
+                userIn.classList.remove("error")
+            },1000);
+
+        }
+    }
+    function resetQr(){
+        userIn.value = "";
+        imageContainer.classList.remove("img-show");
+    }
+
+
+</script>
+
+</html>
