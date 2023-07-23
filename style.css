@@ -87,6 +87,10 @@ input, button{
     max-height: 300px;  
 }
 
+.container>button[onclick="resetQr()"]{
+    display: none;
+}
+
 .error{
     animation: shake 0.1s linear 10;
 }

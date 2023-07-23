@@ -26,6 +26,9 @@
     let image = document.getElementById("generatedImg");
         let userIn = document.getElementsByName("userInput")[0];
         let imageContainer = document.getElementById("ImgContain");
+        let Qrbtn = document.getElementsByTagName("button")[0];
+        let Resetbtn = document.getElementsByTagName("button")[1];
+        console.log(Qrbtn);
 
     function QrGenerate(){
         
@@ -33,6 +36,8 @@
             
             image.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+ userIn.value;
             imageContainer.classList.add("img-show");
+            Qrbtn.textContent = "Generated";
+            Resetbtn.style.display = "inline-block";
         }else{
             userIn.classList.add("error");
             setTimeout(()=>{
@@ -44,6 +49,8 @@
     function resetQr(){
         userIn.value = "";
         imageContainer.classList.remove("img-show");
+        Qrbtn.textContent = "Generate QR Code";
+        Resetbtn.style.display = "none";
     }
 
 
